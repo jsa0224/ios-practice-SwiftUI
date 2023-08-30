@@ -11,8 +11,8 @@
 		AEB59C712A9F15AD00EB1ECA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB59C702A9F15AD00EB1ECA /* ContentView.swift */; };
 		AEB59C732A9F15AE00EB1ECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEB59C722A9F15AE00EB1ECA /* Assets.xcassets */; };
 		AEB59C762A9F15AE00EB1ECA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEB59C752A9F15AE00EB1ECA /* Preview Assets.xcassets */; };
-		AEB59C7D2A9F15ED00EB1ECA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB59C7C2A9F15ED00EB1ECA /* AppState.swift */; };
-		AEB59C812A9F174100EB1ECA /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB59C802A9F174100EB1ECA /* AppAction.swift */; };
+		AEB59C7D2A9F15ED00EB1ECA /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB59C7C2A9F15ED00EB1ECA /* Feature.swift */; };
+		AEB59C872A9F19E900EB1ECA /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = AEB59C862A9F19E900EB1ECA /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,8 +21,7 @@
 		AEB59C702A9F15AD00EB1ECA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AEB59C722A9F15AE00EB1ECA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AEB59C752A9F15AE00EB1ECA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		AEB59C7C2A9F15ED00EB1ECA /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		AEB59C802A9F174100EB1ECA /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
+		AEB59C7C2A9F15ED00EB1ECA /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEB59C872A9F19E900EB1ECA /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,8 +55,7 @@
 		AEB59C6D2A9F15AD00EB1ECA /* JuiceMaker */ = {
 			isa = PBXGroup;
 			children = (
-				AEB59C7E2A9F15F900EB1ECA /* State */,
-				AEB59C7F2A9F172E00EB1ECA /* Action */,
+				AEB59C882A9F1ADB00EB1ECA /* Feature */,
 				AEB59C6E2A9F15AD00EB1ECA /* JuiceMakerApp.swift */,
 				AEB59C702A9F15AD00EB1ECA /* ContentView.swift */,
 				AEB59C722A9F15AE00EB1ECA /* Assets.xcassets */,
@@ -73,20 +72,12 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		AEB59C7E2A9F15F900EB1ECA /* State */ = {
+		AEB59C882A9F1ADB00EB1ECA /* Feature */ = {
 			isa = PBXGroup;
 			children = (
-				AEB59C7C2A9F15ED00EB1ECA /* AppState.swift */,
+				AEB59C7C2A9F15ED00EB1ECA /* Feature.swift */,
 			);
-			path = State;
-			sourceTree = "<group>";
-		};
-		AEB59C7F2A9F172E00EB1ECA /* Action */ = {
-			isa = PBXGroup;
-			children = (
-				AEB59C802A9F174100EB1ECA /* AppAction.swift */,
-			);
-			path = Action;
+			path = Feature;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,6 +96,9 @@
 			dependencies = (
 			);
 			name = JuiceMaker;
+			packageProductDependencies = (
+				AEB59C862A9F19E900EB1ECA /* ComposableArchitecture */,
+			);
 			productName = JuiceMaker;
 			productReference = AEB59C6B2A9F15AD00EB1ECA /* JuiceMaker.app */;
 			productType = "com.apple.product-type.application";
@@ -133,6 +127,9 @@
 				Base,
 			);
 			mainGroup = AEB59C622A9F15AD00EB1ECA;
+			packageReferences = (
+				AEB59C852A9F19E900EB1ECA /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = AEB59C6C2A9F15AD00EB1ECA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -159,8 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEB59C7D2A9F15ED00EB1ECA /* AppState.swift in Sources */,
-				AEB59C812A9F174100EB1ECA /* AppAction.swift in Sources */,
+				AEB59C7D2A9F15ED00EB1ECA /* Feature.swift in Sources */,
 				AEB59C712A9F15AD00EB1ECA /* ContentView.swift in Sources */,
 				AEB59C6F2A9F15AD00EB1ECA /* JuiceMakerApp.swift in Sources */,
 			);
@@ -361,6 +357,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AEB59C852A9F19E900EB1ECA /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AEB59C862A9F19E900EB1ECA /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AEB59C852A9F19E900EB1ECA /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AEB59C632A9F15AD00EB1ECA /* Project object */;
 }
