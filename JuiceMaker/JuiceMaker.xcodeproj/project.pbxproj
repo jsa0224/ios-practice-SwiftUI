@@ -8,20 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		AEB59C6F2A9F15AD00EB1ECA /* JuiceMakerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB59C6E2A9F15AD00EB1ECA /* JuiceMakerApp.swift */; };
-		AEB59C712A9F15AD00EB1ECA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB59C702A9F15AD00EB1ECA /* ContentView.swift */; };
+		AEB59C712A9F15AD00EB1ECA /* JuiceMakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB59C702A9F15AD00EB1ECA /* JuiceMakerView.swift */; };
 		AEB59C732A9F15AE00EB1ECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEB59C722A9F15AE00EB1ECA /* Assets.xcassets */; };
 		AEB59C762A9F15AE00EB1ECA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEB59C752A9F15AE00EB1ECA /* Preview Assets.xcassets */; };
-		AEB59C7D2A9F15ED00EB1ECA /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB59C7C2A9F15ED00EB1ECA /* Feature.swift */; };
+		AEB59C7D2A9F15ED00EB1ECA /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB59C7C2A9F15ED00EB1ECA /* Entity.swift */; };
 		AEB59C872A9F19E900EB1ECA /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = AEB59C862A9F19E900EB1ECA /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AEB59C6B2A9F15AD00EB1ECA /* JuiceMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JuiceMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB59C6E2A9F15AD00EB1ECA /* JuiceMakerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerApp.swift; sourceTree = "<group>"; };
-		AEB59C702A9F15AD00EB1ECA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AEB59C702A9F15AD00EB1ECA /* JuiceMakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMakerView.swift; sourceTree = "<group>"; };
 		AEB59C722A9F15AE00EB1ECA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AEB59C752A9F15AE00EB1ECA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		AEB59C7C2A9F15ED00EB1ECA /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		AEB59C7C2A9F15ED00EB1ECA /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,9 +55,9 @@
 		AEB59C6D2A9F15AD00EB1ECA /* JuiceMaker */ = {
 			isa = PBXGroup;
 			children = (
-				AEB59C882A9F1ADB00EB1ECA /* Feature */,
 				AEB59C6E2A9F15AD00EB1ECA /* JuiceMakerApp.swift */,
-				AEB59C702A9F15AD00EB1ECA /* ContentView.swift */,
+				AEB59C882A9F1ADB00EB1ECA /* Entity */,
+				AEB59C892AA8548A00EB1ECA /* View */,
 				AEB59C722A9F15AE00EB1ECA /* Assets.xcassets */,
 				AEB59C742A9F15AE00EB1ECA /* Preview Content */,
 			);
@@ -72,12 +72,20 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		AEB59C882A9F1ADB00EB1ECA /* Feature */ = {
+		AEB59C882A9F1ADB00EB1ECA /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				AEB59C7C2A9F15ED00EB1ECA /* Feature.swift */,
+				AEB59C7C2A9F15ED00EB1ECA /* Entity.swift */,
 			);
-			path = Feature;
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		AEB59C892AA8548A00EB1ECA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AEB59C702A9F15AD00EB1ECA /* JuiceMakerView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,8 +164,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEB59C7D2A9F15ED00EB1ECA /* Feature.swift in Sources */,
-				AEB59C712A9F15AD00EB1ECA /* ContentView.swift in Sources */,
+				AEB59C7D2A9F15ED00EB1ECA /* Entity.swift in Sources */,
+				AEB59C712A9F15AD00EB1ECA /* JuiceMakerView.swift in Sources */,
 				AEB59C6F2A9F15AD00EB1ECA /* JuiceMakerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
