@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct JuiceMakerApp: App {
     var body: some Scene {
         WindowGroup {
-            JuiceMakerView()
+            JuiceMakerView(store: Store(initialState: JuiceMaker.State()) {
+                JuiceMaker()
+                    ._printChanges()
+            })
         }
     }
 }
