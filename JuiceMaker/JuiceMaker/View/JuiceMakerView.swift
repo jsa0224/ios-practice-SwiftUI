@@ -12,13 +12,52 @@ struct JuiceMakerView: View {
     let store: StoreOf<JuiceMaker>
 
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            NavigationView {
+                HStack {
+                    VStack {
+                        Text("🍓")
+                        Text("\(viewStore.state.stock[0])")
+                    }
+                    .padding()
+
+                    VStack {
+                        Text("🍌")
+                        Text("\(viewStore.state.stock[1])")
+                    }
+                    .padding()
+
+                    VStack {
+                        Text("🍍")
+                        Text("\(viewStore.state.stock[2])")
+                    }
+                    .padding()
+
+                    VStack {
+                        Text("🥝")
+                        Text("\(viewStore.state.stock[3])")
+                    }
+                    .padding()
+
+                    VStack {
+                        Text("🥭")
+                        Text("\(viewStore.state.stock[4])")
+                    }
+                    .padding()
+                }
+                .padding()
+            }
+            .navigationTitle("Juice Maker")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
         }
-        .padding()
     }
 }
 
