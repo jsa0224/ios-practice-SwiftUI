@@ -8,7 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct JuiceMenuView: View {
+struct JuiceRowView: View {
     var juice: Juice
 
     var body: some View {
@@ -25,6 +25,6 @@ struct JuiceMenuView: View {
 
 struct JuiceMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        JuiceMenuView(juice: Juice.bananaJuice)
+        JuiceRowView(juice: Juice.bananaJuice)
     }
 }

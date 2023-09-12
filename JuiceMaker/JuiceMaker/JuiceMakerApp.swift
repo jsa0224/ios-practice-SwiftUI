@@ -12,7 +12,7 @@ import ComposableArchitecture
 struct JuiceMakerApp: App {
     var body: some Scene {
         WindowGroup {
-            JuiceMakerView(store: Store(initialState: JuiceMaker.State()) {
+            JuiceListView(store: Store(initialState: JuiceMaker.State()) {
                 JuiceMaker()
                     ._printChanges()
             })

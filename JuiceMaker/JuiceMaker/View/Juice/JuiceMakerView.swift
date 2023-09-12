@@ -1,15 +1,14 @@
 //
-//  ContentView.swift
+//  JuiceMakingView.swift
 //  JuiceMaker
 //
-//  Created by 정선아 on 2023/08/30.
+//  Created by 정선아 on 2023/09/12.
 //
 
 import SwiftUI
-import ComposableArchitecture
 
 struct JuiceMakerView: View {
-    let store: StoreOf<JuiceMaker>
+    var juice: Juice
 
     func ingredientText(_ shape: String, _ quantity: String) -> some View {
         HStack {
@@ -19,37 +18,43 @@ struct JuiceMakerView: View {
     }
 
     var body: some View {
-        WithViewStore(self.store, observe: { $0 }) { viewStore in
-            NavigationView {
-                List {
-                    ForEach(viewStore.juices, id: \.self) { juice in
-                        NavigationLink {
-                            FruitStoreView(store: store)
-                        } label: {
-                            HStack {
-                                JuiceMenuView(juice: juice)
+        VStack(spacing: 30) {
+            Spacer()
 
-                                ingredientText(juice.ingredient[0].0.shape, juice.ingredient[0].1.description)
+            HStack{
+                ingredientText(juice.ingredient[0].0.shape, juice.ingredient[0].1.description)
 
-                                if juice.isNumberOfIngredientRequiredTwo {
-                                    Text("/")
-                                    ingredientText(juice.ingredient[1].0.shape, juice.ingredient[1].1.description)
-                                }
-                            }
-                        }
-                    }
+                if juice.isNumberOfIngredientRequiredTwo {
+                    Text("/")
+                    ingredientText(juice.ingredient[1].0.shape, juice.ingredient[1].1.description)
                 }
-                .navigationTitle("Juice Maker")
             }
+
+            Image("믹서기")
+                .resizable()
+                .frame(width: 200, height: 200)
+
+            Spacer()
+
+            Button {
+
+            } label: {
+                Text("주문하기")
+                    .font(.title)
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color.blue)
+                    .cornerRadius(10)
+            }
+
+            Spacer()
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+
+struct JuiceMakingView_Previews: PreviewProvider {
     static var previews: some View {
-        JuiceMakerView(store: Store(initialState: JuiceMaker.State()) {
-            JuiceMaker()
-                ._printChanges()
-        })
+        JuiceMakerView(juice: .mangoKiwiJuice)
     }
 }
