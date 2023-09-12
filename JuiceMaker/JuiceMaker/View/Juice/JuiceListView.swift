@@ -24,7 +24,7 @@ struct JuiceListView: View {
                 List {
                     ForEach(viewStore.juices, id: \.self) { juice in
                         NavigationLink {
-                            JuiceMakerView(juice: juice)
+                            JuiceMakerView(store: store, juice: juice)
                         } label: {
                             HStack {
                                 JuiceRowView(juice: juice)
