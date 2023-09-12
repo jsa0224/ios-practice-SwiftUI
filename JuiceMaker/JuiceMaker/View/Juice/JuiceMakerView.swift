@@ -11,6 +11,13 @@ import ComposableArchitecture
 struct JuiceMakerView: View {
     let store: StoreOf<JuiceMaker>
 
+    func ingredientText(_ shape: String, _ quantity: String) -> some View {
+        HStack {
+            Text(shape)
+            Text(quantity)
+        }
+    }
+
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             NavigationView {
@@ -19,7 +26,16 @@ struct JuiceMakerView: View {
                         NavigationLink {
                             FruitStoreView(store: store)
                         } label: {
-                            JuiceMenuView(juice: juice)
+                            HStack {
+                                JuiceMenuView(juice: juice)
+
+                                ingredientText(juice.ingredient[0].0.shape, juice.ingredient[0].1.description)
+
+                                if juice.isNumberOfIngredientRequiredTwo {
+                                    Text("/")
+                                    ingredientText(juice.ingredient[1].0.shape, juice.ingredient[1].1.description)
+                                }
+                            }
                         }
                     }
                 }

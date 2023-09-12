@@ -15,7 +15,7 @@ struct JuiceMenuView: View {
         HStack {
             juice.image
                 .resizable()
-                .frame(width: 60, height: 60)
+                .frame(width: 50, height: 50)
             Text(juice.name)
 
             Spacer()

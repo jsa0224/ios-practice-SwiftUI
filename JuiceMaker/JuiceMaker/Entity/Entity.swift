@@ -43,6 +43,25 @@ enum Juice: String, CaseIterable {
             return [(.mango, 2), (.kiwi, 1)]
         }
     }
+
+    var isNumberOfIngredientRequiredTwo: Bool {
+        switch self {
+        case .strawberryJuice:
+            return false
+        case .bananaJuice:
+            return false
+        case .kiwiJuice:
+            return false
+        case .pineappleJuice:
+            return false
+        case .mangoJuice:
+            return false
+        case .strawberryBananaJuice:
+            return true
+        case .mangoKiwiJuice:
+            return true
+        }
+    }
 }
 
 enum Fruit: Int, CaseIterable {
@@ -54,6 +73,21 @@ enum Fruit: Int, CaseIterable {
 
     var index: Int {
         self.rawValue
+    }
+
+    var shape: String {
+        switch self {
+        case .strawberry:
+            return "🍓"
+        case .banana:
+            return "🍌"
+        case .pineapple:
+            return "🍍"
+        case .kiwi:
+            return "🥝"
+        case .mango:
+            return "🥭"
+        }
     }
 }
 
