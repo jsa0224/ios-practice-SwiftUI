@@ -9,6 +9,7 @@ import ComposableArchitecture
 
 struct JuiceMaker: Reducer {
     struct State: Equatable {
+        let juices: [Juice] = Juice.allCases
         var stock: [Int] = [Int](repeating: 10, count: Fruit.allCases.count)
     }
 

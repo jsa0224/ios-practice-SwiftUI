@@ -7,7 +7,7 @@
 
 import ComposableArchitecture
 
-enum Juice: String {
+enum Juice: String, CaseIterable {
     case strawberryJuice = "딸기쥬스"
     case bananaJuice = "바나나쥬스"
     case kiwiJuice = "키위쥬스"
@@ -41,7 +41,7 @@ enum Juice: String {
 }
 
 enum Fruit: Int, CaseIterable {
-    case strawberry = 0
+    case strawberry
     case banana
     case pineapple
     case kiwi

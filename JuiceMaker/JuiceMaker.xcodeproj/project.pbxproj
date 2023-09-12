@@ -14,6 +14,8 @@
 		AEB59C7D2A9F15ED00EB1ECA /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB59C7C2A9F15ED00EB1ECA /* Entity.swift */; };
 		AEB59C872A9F19E900EB1ECA /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = AEB59C862A9F19E900EB1ECA /* ComposableArchitecture */; };
 		AEB59C8B2AA9ED3200EB1ECA /* JuiceMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB59C8A2AA9ED3200EB1ECA /* JuiceMaker.swift */; };
+		AEB59C8D2AB074CB00EB1ECA /* FruitStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB59C8C2AB074CB00EB1ECA /* FruitStoreView.swift */; };
+		AEB59C8F2AB07E0B00EB1ECA /* JuiceMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB59C8E2AB07E0B00EB1ECA /* JuiceMenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		AEB59C752A9F15AE00EB1ECA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AEB59C7C2A9F15ED00EB1ECA /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		AEB59C8A2AA9ED3200EB1ECA /* JuiceMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMaker.swift; sourceTree = "<group>"; };
+		AEB59C8C2AB074CB00EB1ECA /* FruitStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitStoreView.swift; sourceTree = "<group>"; };
+		AEB59C8E2AB07E0B00EB1ECA /* JuiceMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuiceMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,8 @@
 			children = (
 				AEB59C8A2AA9ED3200EB1ECA /* JuiceMaker.swift */,
 				AEB59C702A9F15AD00EB1ECA /* JuiceMakerView.swift */,
+				AEB59C8C2AB074CB00EB1ECA /* FruitStoreView.swift */,
+				AEB59C8E2AB07E0B00EB1ECA /* JuiceMenuView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,7 +175,9 @@
 			files = (
 				AEB59C7D2A9F15ED00EB1ECA /* Entity.swift in Sources */,
 				AEB59C712A9F15AD00EB1ECA /* JuiceMakerView.swift in Sources */,
+				AEB59C8F2AB07E0B00EB1ECA /* JuiceMenuView.swift in Sources */,
 				AEB59C6F2A9F15AD00EB1ECA /* JuiceMakerApp.swift in Sources */,
+				AEB59C8D2AB074CB00EB1ECA /* FruitStoreView.swift in Sources */,
 				AEB59C8B2AA9ED3200EB1ECA /* JuiceMaker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

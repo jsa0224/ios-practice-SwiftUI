@@ -14,48 +14,16 @@ struct JuiceMakerView: View {
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             NavigationView {
-                HStack {
-                    VStack {
-                        Text("🍓")
-                        Text("\(viewStore.state.stock[0])")
-                    }
-                    .padding()
-
-                    VStack {
-                        Text("🍌")
-                        Text("\(viewStore.state.stock[1])")
-                    }
-                    .padding()
-
-                    VStack {
-                        Text("🍍")
-                        Text("\(viewStore.state.stock[2])")
-                    }
-                    .padding()
-
-                    VStack {
-                        Text("🥝")
-                        Text("\(viewStore.state.stock[3])")
-                    }
-                    .padding()
-
-                    VStack {
-                        Text("🥭")
-                        Text("\(viewStore.state.stock[4])")
-                    }
-                    .padding()
-                }
-                .padding()
-            }
-            .navigationTitle("Juice Maker")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-
-                    } label: {
-                        Image(systemName: "plus")
+                List {
+                    ForEach(viewStore.juices, id: \.self) { juice in
+                        NavigationLink {
+                            FruitStoreView(store: store)
+                        } label: {
+                            Text(juice.name)
+                        }
                     }
                 }
+                .navigationTitle("Juice Maker")
             }
         }
     }
