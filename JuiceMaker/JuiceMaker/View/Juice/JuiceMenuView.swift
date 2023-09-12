@@ -6,15 +6,25 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct JuiceMenuView: View {
+    var juice: Juice
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            juice.image
+                .resizable()
+                .frame(width: 60, height: 60)
+            Text(juice.name)
+
+            Spacer()
+        }
     }
 }
 
 struct JuiceMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        JuiceMenuView()
+        JuiceMenuView(juice: Juice.bananaJuice)
     }
 }

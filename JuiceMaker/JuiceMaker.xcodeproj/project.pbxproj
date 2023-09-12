@@ -99,8 +99,8 @@
 		AEB59C902AB07F6000EB1ECA /* Juice */ = {
 			isa = PBXGroup;
 			children = (
-				AEB59C8E2AB07E0B00EB1ECA /* JuiceMenuView.swift */,
 				AEB59C702A9F15AD00EB1ECA /* JuiceMakerView.swift */,
+				AEB59C8E2AB07E0B00EB1ECA /* JuiceMenuView.swift */,
 			);
 			path = Juice;
 			sourceTree = "<group>";

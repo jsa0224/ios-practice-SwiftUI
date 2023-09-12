@@ -5,6 +5,7 @@
 //  Created by 정선아 on 2023/08/30.
 //
 
+import SwiftUI
 import ComposableArchitecture
 
 enum Juice: String, CaseIterable {
@@ -18,6 +19,10 @@ enum Juice: String, CaseIterable {
 
     var name: String {
         self.rawValue
+    }
+
+    var image: Image {
+        Image(self.name)
     }
 
     var ingredient: [(Fruit, Int)] {

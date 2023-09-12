@@ -19,7 +19,7 @@ struct JuiceMakerView: View {
                         NavigationLink {
                             FruitStoreView(store: store)
                         } label: {
-                            Text(juice.name)
+                            JuiceMenuView(juice: juice)
                         }
                     }
                 }
