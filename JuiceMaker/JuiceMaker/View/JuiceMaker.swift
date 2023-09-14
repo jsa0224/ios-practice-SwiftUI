@@ -11,12 +11,14 @@ struct JuiceMaker: Reducer {
     struct State: Equatable {
         let juices: [Juice] = Juice.allCases
         var stock: [Int] = [Int](repeating: 10, count: Fruit.allCases.count)
+        var isEnoughOfStock: Bool = true
     }
 
     enum Action: Equatable {
         case makingButtonTapped(juice: Juice)
         case decrementButtonTapped(fruit: Fruit)
         case incrementButtonTapped(fruit: Fruit)
+        case deficientOfJuice
         case confirmButtonTapped
         case cancelButtonTapped
     }
@@ -28,10 +30,16 @@ struct JuiceMaker: Reducer {
         case .makingButtonTapped(let juice):
             // TODO: 쥬스 재료가 부족한 경우의 에러 처리는 어떻게 해야할까?
             for (fruit, amount) in juice.ingredient {
-                state.stock[fruit.index] -= amount
-            }
+                if state.stock[fruit.index] >= amount {
+                    state.stock[fruit.index] -= amount
 
+                    return Effect.none
+                } else {
+                    return .send(.deficientOfJuice)
+                }
+            }
             return Effect.none
+
         case .decrementButtonTapped(let fruit):
             state.stock[fruit.index] -= 1
 
@@ -39,6 +47,11 @@ struct JuiceMaker: Reducer {
         case .incrementButtonTapped(let fruit):
             state.stock[fruit.index] += 1
 
+            return Effect.none
+
+        case .deficientOfJuice:
+            state.isEnoughOfStock = false
+            
             return Effect.none
         case .confirmButtonTapped:
             // TODO: 쥬스 재고 화면으로 넘겨야 함

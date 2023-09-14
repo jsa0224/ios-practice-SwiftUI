@@ -8,10 +8,20 @@
 import SwiftUI
 import ComposableArchitecture
 
+extension Animation {
+    static func ripple() -> Animation {
+        Animation.spring(dampingFraction: 0.5)
+            .speed(2)
+    }
+}
+
 struct JuiceMakerView: View {
     let store: StoreOf<JuiceMaker>
     var juice: Juice
     @State private var isShowingDetailView = false
+    @State private var isShakeImageView = false
+    @State private var isEnoughStock = true
+    @State private var isDeficientStock = true
 
     func ingredientText(_ shape: String, _ quantity: String) -> some View {
         HStack {
@@ -37,11 +47,20 @@ struct JuiceMakerView: View {
                 Image("믹서기")
                     .resizable()
                     .frame(width: 200, height: 200)
+//                    .offset(x: isShakeImageView ? 10 : 0)
+//                    .animation(.easeOut(duration: 0.5).repeatForever(autoreverses: isShakeImageView),
+//                               value: isShakeImageView)
+//                    .onTapGesture {
+//                        isShakeImageView.toggle()
+//                    }
 
                 Spacer()
 
                 Button {
+//                    isShakeImageView = true
                     viewStore.send(.makingButtonTapped(juice: juice))
+                    isEnoughStock = viewStore.state.isEnoughOfStock
+                    isDeficientStock = !viewStore.state.isEnoughOfStock
                 } label: {
                     Text("주문하기")
                         .font(.title)
@@ -49,6 +68,14 @@ struct JuiceMakerView: View {
                         .padding()
                         .background(Color.blue)
                         .cornerRadius(10)
+                }
+                .alert(isPresented: $isEnoughStock) {
+                    Alert(title: Text("쥬스 재조 성공"),
+                          dismissButton: .default(Text("확인")))
+                } // 이 얼럿 안 나오는 중...ㅋ
+                .alert(isPresented: $isDeficientStock) {
+                    Alert(title: Text("쥬스 재조 실패"),
+                          dismissButton: .default(Text("확인")))
                 }
 
                 Spacer()
@@ -71,7 +98,6 @@ struct JuiceMakerView: View {
         }
     }
 }
-
 
 struct JuiceMakingView_Previews: PreviewProvider {
     static var previews: some View {
