@@ -11,15 +11,18 @@ struct JuiceMaker: Reducer {
     struct State: Equatable {
         let juices: [Juice] = Juice.allCases
         var stock: [Int] = [Int](repeating: 10, count: Fruit.allCases.count)
-        var isEnoughOfStock: Bool = true
+        var isEnoughOfStock: Bool = false
+        var isDeficientOfStock: Bool = false
+        var isShowingDetailView: Bool = false
     }
 
     enum Action: Equatable {
         case makingButtonTapped(juice: Juice)
         case decrementButtonTapped(fruit: Fruit)
         case incrementButtonTapped(fruit: Fruit)
-        case deficientOfJuice
-        case confirmButtonTapped
+        case isEnoughFruit(isEnough: Bool)
+        case isDeficientFruit(isDeficient: Bool)
+        case confirmButtonTapped(isConfirmButtonTapped: Bool)
         case cancelButtonTapped
     }
 
@@ -28,14 +31,13 @@ struct JuiceMaker: Reducer {
     func reduce(into state: inout State, action: Action) -> ComposableArchitecture.Effect<Action> {
         switch action {
         case .makingButtonTapped(let juice):
-            // TODO: 쥬스 재료가 부족한 경우의 에러 처리는 어떻게 해야할까?
             for (fruit, amount) in juice.ingredient {
                 if state.stock[fruit.index] >= amount {
                     state.stock[fruit.index] -= amount
+                    return .send(.isEnoughFruit(isEnough: true))
 
-                    return Effect.none
                 } else {
-                    return .send(.deficientOfJuice)
+                    return .send(.isDeficientFruit(isDeficient: true))
                 }
             }
             return Effect.none
@@ -49,12 +51,16 @@ struct JuiceMaker: Reducer {
 
             return Effect.none
 
-        case .deficientOfJuice:
-            state.isEnoughOfStock = false
+        case .isEnoughFruit(let isEnough):
+            state.isEnoughOfStock = isEnough
             
             return Effect.none
-        case .confirmButtonTapped:
-            // TODO: 쥬스 재고 화면으로 넘겨야 함
+        case .isDeficientFruit(let isDeficient):
+            state.isDeficientOfStock = isDeficient
+
+            return Effect.none
+        case .confirmButtonTapped(let isConfirmButtonTapped):
+            state.isShowingDetailView = isConfirmButtonTapped
             return Effect.none
         case .cancelButtonTapped:
             return Effect.none

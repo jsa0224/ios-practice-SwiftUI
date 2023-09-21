@@ -18,10 +18,6 @@ extension Animation {
 struct JuiceMakerView: View {
     let store: StoreOf<JuiceMaker>
     var juice: Juice
-    @State private var isShowingDetailView = false
-    @State private var isShakeImageView = false
-    @State private var isEnoughStock = true
-    @State private var isDeficientStock = true
 
     func ingredientText(_ shape: String, _ quantity: String) -> some View {
         HStack {
@@ -47,20 +43,11 @@ struct JuiceMakerView: View {
                 Image("믹서기")
                     .resizable()
                     .frame(width: 200, height: 200)
-//                    .offset(x: isShakeImageView ? 10 : 0)
-//                    .animation(.easeOut(duration: 0.5).repeatForever(autoreverses: isShakeImageView),
-//                               value: isShakeImageView)
-//                    .onTapGesture {
-//                        isShakeImageView.toggle()
-//                    }
 
                 Spacer()
 
                 Button {
-//                    isShakeImageView = true
                     viewStore.send(.makingButtonTapped(juice: juice))
-                    isEnoughStock = viewStore.state.isEnoughOfStock
-                    isDeficientStock = !viewStore.state.isEnoughOfStock
                 } label: {
                     Text("주문하기")
                         .font(.title)
@@ -68,19 +55,28 @@ struct JuiceMakerView: View {
                         .padding()
                         .background(Color.blue)
                         .cornerRadius(10)
-                }
-                .alert(isPresented: $isEnoughStock) {
-                    Alert(title: Text("쥬스 재조 성공"),
-                          dismissButton: .default(Text("확인")))
-                } // 이 얼럿 안 나오는 중...ㅋ
-                .alert(isPresented: $isDeficientStock) {
-                    Alert(title: Text("쥬스 재조 실패"),
-                          dismissButton: .default(Text("확인")))
+                } // TODO: 얼럿 2개 이상이 같은 버튼에 붙어 있으면 안 되는 버그가 있는데 어떻게 해결할까? -> 1. ViewModifier - 실패..
+//                .alert(isPresented: viewStore.binding(get: \.isEnoughOfStock,
+//                                                      send: { .isEnoughFruit(isEnough: $0) })) {
+//                    Alert(title: Text("쥬스 재조 성공"),
+//                          dismissButton: .default(Text("확인")))
+//
+//                }
+                .alert("쥬스 재조 실패", isPresented: viewStore.binding(get: \.isDeficientOfStock,
+                                                                    send: { .isDeficientFruit(isDeficient: $0) })) {
+                        Button("과일 재고 추가") {
+                            viewStore.send(.confirmButtonTapped(isConfirmButtonTapped: true))
+                        }
+                        Button("취소") {
+                            viewStore.send(.cancelButtonTapped)
+                        }
                 }
 
                 Spacer()
 
-                NavigationLink(destination: FruitStoreView(store: store), isActive: $isShowingDetailView) {
+                NavigationLink(destination: FruitStoreView(store: store),
+                               isActive: viewStore.binding(get: \.isShowingDetailView,
+                                                           send: { .confirmButtonTapped(isConfirmButtonTapped: $0) })) {
                     EmptyView()
                 }
                 .hidden()
@@ -89,13 +85,14 @@ struct JuiceMakerView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        isShowingDetailView = true
+                        viewStore.send(.confirmButtonTapped(isConfirmButtonTapped: true))
                     } label: {
                         Image(systemName: "plus")
                     }
                 }
             }
         }
+        .padding()
     }
 }
 

@@ -40,6 +40,7 @@ struct JuiceListView: View {
                     }
                 }
                 .navigationTitle("Juice Menu") // 이거 색깔 어케 바꿈,,
+                .navigationBarTitleDisplayMode(.inline)
             }
         }
     }

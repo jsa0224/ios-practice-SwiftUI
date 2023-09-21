@@ -8,6 +8,9 @@
 import SwiftUI
 import ComposableArchitecture
 
+// 굳이 과일 종류를 다 보여줄 필요가 있나?
+// 음.. 해당 쥬스에 쓰이는 과일만 보여주고, 2개 이상이면 슬라이드 해서 추가할 수 있게 구현해보자요!
+
 struct FruitStoreView: View {
     let store: StoreOf<JuiceMaker>
     
